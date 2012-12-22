@@ -23,3 +23,7 @@ Example:
 More details:
 ---------------------
 For a more detailed guide see http://jelled.com/google-analytics-plugin-for-phonegap-cordova-2-2-0-ios
+
+Credit:
+---------------------
+The updated GoogleAnalyticsPlugin.m and GoogleAnalyticsPlugin.h files were courtesy of nocksf in this discussion: https://groups.google.com/d/msg/phonegap/uqYjTmd4w_E/fZvJCpAbtsUJ
