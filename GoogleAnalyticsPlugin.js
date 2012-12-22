@@ -25,14 +25,3 @@ function startGA(){
         }
     }
 }
-
-<script type="text/javascript" src="cordova-2.2.0.js"></script>
-<script type="text/javascript" src="js/GoogleAnalyticsPlugin.js"></script>
-<script type="text/javascript">
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    startGA();
-    window.GA.trackerWithTrackingId("UA-24808054-3");
-    window.GA.trackView("/index");
-}
-</script>
