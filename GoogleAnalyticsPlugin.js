@@ -1,11 +1,19 @@
 if (!window.GA) {
 	window.GA = {
 		trackerWithTrackingId: function(id) {
-			PhoneGap.exec("GoogleAnalyticsPlugin.trackerWithTrackingId",id);
+			if (cordova && cordova.exec) {
+				cordova.exec("GoogleAnalyticsPlugin.trackerWithTrackingId",id);
+			} else {
+				console.log("would track using ID " + id);
+			}
 			//console.log("trackerWithTrackingId Initialized");
 		},
 		trackView: function(pageUri) {
-			PhoneGap.exec("GoogleAnalyticsPlugin.trackView",pageUri);
+			if (cordova && cordova.exec) {
+				cordova.exec("GoogleAnalyticsPlugin.trackView",pageUri);
+			} else {
+				console.log("would track VIEW " + pageUri);
+			}
 			//console.log("trackView Initialized");
 		},
 		trackEventWithCategory: function(category,action,label,value) {
@@ -13,7 +21,11 @@ if (!window.GA) {
 				action:action,
 				label:label,
 				value:value};
-			PhoneGap.exec("GoogleAnalyticsPlugin.trackEventWithCategory",options);
+			if (cordova && cordova.exec) {
+				cordova.exec("GoogleAnalyticsPlugin.trackEventWithCategory",options);
+			} else {
+				console.log("would track EVENT " + category+"/"+action+"/"+label+"/"+value);
+			}
 		},
 		hitDispatched: function(hitString) {
 			//console.log("hitDispatched :: " + hitString);
@@ -21,5 +33,5 @@ if (!window.GA) {
 		trackerDispatchDidComplete: function(count) {
 			//console.log("trackerDispatchDidComplete :: " + count);
 		}
-	}
+	};
 }
