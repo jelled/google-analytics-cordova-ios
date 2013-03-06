@@ -35,6 +35,11 @@ static const NSInteger kGANDispatchPeriodSec = 2;
     }
 }
 
+- (void) sessionStart:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+{
+    [GAI sharedInstance].defaultTracker.sessionStart = YES;
+}
+
 - (void) hitDispatched:(NSString *)hitString
 {
     NSString* callback = [NSString stringWithFormat:@"window.plugins.googleAnalyticsPlugin.hitDispatched(%@);",  hitString];

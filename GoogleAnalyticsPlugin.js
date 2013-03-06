@@ -18,6 +18,14 @@ if (!window.GA) {
 		hitDispatched: function(hitString) {
 			//console.log("hitDispatched :: " + hitString);
 		},
+		sessionStart: function() {
+			if (cordova && cordova.exec) {
+				cordova.exec("GoogleAnalyticsPlugin.sessionStart",pageUri);
+			} else {
+				console.log("would start new Session with the next event");
+			}
+
+		},
 		trackerDispatchDidComplete: function(count) {
 			//console.log("trackerDispatchDidComplete :: " + count);
 		}
