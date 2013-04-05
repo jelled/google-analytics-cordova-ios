@@ -20,7 +20,7 @@ if (!window.GA) {
 		},
 		sessionStart: function() {
 			if (cordova && cordova.exec) {
-				cordova.exec("GoogleAnalyticsPlugin.sessionStart",pageUri);
+				cordova.exec("GoogleAnalyticsPlugin.sessionStart");
 			} else {
 				console.log("would start new Session with the next event");
 			}
