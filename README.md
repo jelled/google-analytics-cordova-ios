@@ -1,11 +1,12 @@
-# Google Analytics plugin for Cordova 2.2.0 on iOS
+# Google Analytics plugin for Cordova 2.4.0 on iOS
 ====================
-A iOS Google Analytics SDK 2.0 plugin for Cordova 2.2+
+A iOS Google Analytics SDK 2.0 plugin for Cordova 2.4+
 
 Setup:
 ---------------------
 1. Add the SystemConfiguration and CoreData frameworks to Xcode.
-2. Open your Cordova.plist file add a new entry under Plugins with the key as googleAnalyticsPlugin (note the lower case g) and the value as GoogleAnalyticsPlugin. Then under ExternalHosts add a new entry with a value of *
+2. Open your config.xml file add a new entry under Plugins `<plugin name="googleAnalyticsPlugin" value="GoogleAnalyticsPlugin" />`
+ (once lowercase g, once UPPERCASE G!). Make sure, there's a `<access origin="*" />` line.
 3. Drag and drop the GoogleAnalytics folder onto your Plugins folder in Xcode. Select 'Copy items into destination group's folder (if needed)', select 'Create groups for any added folders', and check your target under 'Add to targets'.
 4. Reference your cordova.js file and the GoogleAnalyticsPlugin.js in your html. To use, wrap the window.GA methods inside of an onDeviceReady function.
 
