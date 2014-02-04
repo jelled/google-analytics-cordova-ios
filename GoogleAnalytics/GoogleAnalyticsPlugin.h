@@ -7,5 +7,6 @@
 - (void) trackerWithTrackingId:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void) trackEventWithCategory:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void) trackView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void) sessionStart:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end
