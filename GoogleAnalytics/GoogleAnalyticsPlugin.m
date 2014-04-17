@@ -2,20 +2,22 @@
 // Dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 2;
 @implementation GoogleAnalyticsPlugin
-- (void) trackerWithTrackingId:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
-{
-    NSString* accountId = [arguments objectAtIndex:0];
+
+- (void) trackerWithTrackingId:(CDVInvokedUrlCommand*)command 
+{    
+    NSString* accountId = [command.arguments objectAtIndex:0];
+    NSLog(@"with account id %@",accountId);
     [GAI sharedInstance].debug = YES;
     [GAI sharedInstance].dispatchInterval = kGANDispatchPeriodSec;
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [[GAI sharedInstance] trackerWithTrackingId:accountId];
 }
-- (void) trackEventWithCategory:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void) trackEventWithCategory:(CDVInvokedUrlCommand*)command
 {
-    NSString* category = [options valueForKey:@"category"];
-    NSString* action = [options valueForKey:@"action"];
-    NSString* label = [options valueForKey:@"label"];
-    NSNumber* value = [options valueForKey:@"value"];
+    NSString* category = [command.arguments objectAtIndex:0];
+    NSString* action = [command.arguments objectAtIndex:1];
+    NSString* label = [command.arguments objectAtIndex:2];
+    NSNumber* value = [command.arguments objectAtIndex:3];
     if (![[GAI sharedInstance].defaultTracker trackEventWithCategory:category
                                                           withAction:action
                                                            withLabel:label
@@ -27,15 +29,17 @@ static const NSInteger kGANDispatchPeriodSec = 2;
     NSLog(@"GoogleAnalyticsPlugin.trackEvent::%@, %@, %@, %@",category,action,label,value);
 }
 
-- (void) trackView:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void) trackView:(CDVInvokedUrlCommand*)command
 {
-    NSString* pageUri = [arguments objectAtIndex:0];
+    
+    NSString* pageUri = [command.arguments objectAtIndex:0];
+    NSLog(@"with trackView %@",pageUri);
     if (![[GAI sharedInstance].defaultTracker trackView:pageUri]) {
-        // TODO: Handle error here
+       NSLog(@"ERROR LOADING PAGEURI");
     }
 }
 
-- (void) hitDispatched:(NSString *)hitString
+- (void) hitDispatched:(CDVInvokedUrlCommand*)command
 {
     NSString* callback = [NSString stringWithFormat:@"window.plugins.googleAnalyticsPlugin.hitDispatched(%@);",  hitString];
     [ self.webView stringByEvaluatingJavaScriptFromString:callback];
