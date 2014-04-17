@@ -1,6 +1,6 @@
-# Google Analytics plugin for Cordova 2.4.0 on iOS
+# Google Analytics plugin for Cordova 2.9.0 on iOS
 ====================
-A iOS Google Analytics SDK 2.0 plugin for Cordova 2.4+
+A iOS Google Analytics SDK 2.0 plugin for Cordova 2.9.0
 
 Setup:
 ---------------------
